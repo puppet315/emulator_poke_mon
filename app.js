@@ -17,6 +17,7 @@ const setStatus = (message) => {
 
 const bootEmulator = ({ core, romSource, displayName }) => {
   const gameEl = document.getElementById('game');
+  gameEl.replaceChildren();
   gameEl.innerHTML = '';
 
   window.EJS_player = '#game';
@@ -33,6 +34,14 @@ const bootEmulator = ({ core, romSource, displayName }) => {
     window.EJS_gameID = `uploaded-${Date.now()}`;
   }
 
+  const existingLoader = document.getElementById('ejs-loader-runtime');
+  if (existingLoader) existingLoader.remove();
+
+  const script = document.createElement('script');
+  script.id = 'ejs-loader-runtime';
+  script.src = `https://cdn.emulatorjs.org/stable/data/loader.js?v=${Date.now()}`;
+  script.async = true;
+  document.body.appendChild(script);
   const script = document.createElement('script');
   script.src = 'https://cdn.emulatorjs.org/stable/data/loader.js';
   script.async = true;
