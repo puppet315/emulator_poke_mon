@@ -69,6 +69,38 @@ const bootEmulator = ({ core, romSource, displayName }) => {
 </html>`;
 
   gameEl.replaceChildren(iframe);
+const bootEmulator = ({ core, romSource, displayName }) => {
+  const gameEl = document.getElementById('game');
+  gameEl.replaceChildren();
+  gameEl.innerHTML = '';
+
+  window.EJS_player = '#game';
+  window.EJS_core = core;
+  window.EJS_pathtodata = 'https://cdn.emulatorjs.org/stable/data/';
+  window.EJS_gameName = displayName;
+  window.EJS_color = '#6ea8fe';
+
+  if (typeof romSource === 'string') {
+    window.EJS_gameUrl = romSource;
+    delete window.EJS_gameID;
+  } else {
+    window.EJS_gameUrl = URL.createObjectURL(romSource);
+    window.EJS_gameID = `uploaded-${Date.now()}`;
+  }
+
+  const existingLoader = document.getElementById('ejs-loader-runtime');
+  if (existingLoader) existingLoader.remove();
+
+  const script = document.createElement('script');
+  script.id = 'ejs-loader-runtime';
+  script.src = `https://cdn.emulatorjs.org/stable/data/loader.js?v=${Date.now()}`;
+  script.async = true;
+  document.body.appendChild(script);
+  const script = document.createElement('script');
+  script.src = 'https://cdn.emulatorjs.org/stable/data/loader.js';
+  script.async = true;
+  gameEl.appendChild(script);
+
   setStatus(`Running: ${displayName} (${core.toUpperCase()})`);
 };
 
@@ -81,6 +113,9 @@ romFileInput.addEventListener('change', refreshUploadedButton);
 playUploadedBtn.addEventListener('click', () => {
   const file = romFileInput.files?.[0];
   if (!file) return;
+  if (!file) {
+    return;
+  }
 
   bootEmulator({
     core: coreSelect.value,
@@ -107,6 +142,9 @@ const loadCuratedRoms = async () => {
   try {
     const response = await fetch('roms/curated-roms.json', { cache: 'no-store' });
     if (!response.ok) throw new Error('Failed to load curated ROM list.');
+    if (!response.ok) {
+      throw new Error('Failed to load curated ROM list.');
+    }
 
     const roms = await response.json();
     const safeRoms = Array.isArray(roms) && roms.length ? roms : [defaultCuratedEntry];
