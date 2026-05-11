@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pokémon ROM Emulator</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <h1>Pokémon ROM Emulator</h1>
+      <p>Play your own ROMs or launch curated games directly in your browser.</p>
+    </header>
+
+    <main class="layout">
+      <section class="panel controls">
+        <h2>Load a ROM</h2>
+        <p class="muted">Upload your own game file (.gba, .gb, .gbc, .nes, .n64, .nds, etc.).</p>
+
+        <label class="field">
+          <span>Choose ROM file</span>
+          <input id="romFileInput" type="file" accept=".gba,.gb,.gbc,.nes,.n64,.z64,.nds,.smc,.sfc,.bin,.zip" />
+        </label>
+
+        <label class="field">
+          <span>Core (system)</span>
+          <select id="coreSelect">
+            <option value="gba">Game Boy Advance (GBA)</option>
+            <option value="gb">Game Boy / Game Boy Color (GB/GBC)</option>
+            <option value="nds">Nintendo DS (NDS)</option>
+            <option value="nes">Nintendo Entertainment System (NES)</option>
+            <option value="n64">Nintendo 64 (N64)</option>
+            <option value="snes">Super Nintendo (SNES)</option>
+          </select>
+        </label>
+
+        <button id="playUploadedBtn" class="btn primary" disabled>Play uploaded ROM</button>
+
+        <hr />
+
+        <h2>Curated ROMs</h2>
+        <p class="muted">These are ROM links that you host in this repository.</p>
+        <label class="field">
+          <span>Available games</span>
+          <select id="curatedRomSelect"></select>
+        </label>
+        <button id="playCuratedBtn" class="btn">Play curated ROM</button>
+
+        <div class="note">
+          <strong>How to add curated ROMs:</strong>
+          <ol>
+            <li>Place ROM files in <code>/roms</code>.</li>
+            <li>Edit <code>roms/curated-roms.json</code> and add entries.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="panel emulator">
+        <div class="screen-top">
+          <h2>Emulator Screen</h2>
+          <span id="statusText">Waiting for ROM…</span>
+        </div>
+        <div id="game"></div>
+      </section>
+    </main>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
