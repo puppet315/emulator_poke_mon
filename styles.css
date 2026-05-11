@@ -119,6 +119,8 @@ select,
   margin-top: 0.8rem;
   height: min(70vh, 680px);
   width: min(100%, 960px);
+  min-height: 460px;
+  width: 100%;
   border-radius: 10px;
   overflow: hidden;
   background: #070b1d;
@@ -133,5 +135,6 @@ select,
   #game {
     height: min(60vh, 520px);
     width: 100%;
+    min-height: 360px;
   }
 }

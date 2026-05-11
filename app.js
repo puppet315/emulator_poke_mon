@@ -18,6 +18,7 @@ const setStatus = (message) => {
 const bootEmulator = ({ core, romSource, displayName }) => {
   const gameEl = document.getElementById('game');
   gameEl.replaceChildren();
+  gameEl.innerHTML = '';
 
   window.EJS_player = '#game';
   window.EJS_core = core;
@@ -41,6 +42,10 @@ const bootEmulator = ({ core, romSource, displayName }) => {
   script.src = `https://cdn.emulatorjs.org/stable/data/loader.js?v=${Date.now()}`;
   script.async = true;
   document.body.appendChild(script);
+  const script = document.createElement('script');
+  script.src = 'https://cdn.emulatorjs.org/stable/data/loader.js';
+  script.async = true;
+  gameEl.appendChild(script);
 
   setStatus(`Running: ${displayName} (${core.toUpperCase()})`);
 };
