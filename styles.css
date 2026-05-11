@@ -1,0 +1,145 @@
+:root {
+  color-scheme: dark;
+  --bg: #0b1020;
+  --card: #121932;
+  --card-2: #1c2548;
+  --text: #e7ecff;
+  --muted: #9fb0df;
+  --primary: #6ea8fe;
+  --primary-2: #4e88f0;
+  --border: #2b3b75;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: radial-gradient(1200px circle at top right, #1a2a61, var(--bg));
+  color: var(--text);
+}
+
+.app-header {
+  padding: 2rem 1.2rem 1rem;
+  text-align: center;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+}
+
+.app-header p {
+  margin-top: 0.6rem;
+  color: var(--muted);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(280px, 380px) 1fr;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.panel {
+  background: linear-gradient(180deg, var(--card), var(--card-2));
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 0.9rem;
+}
+
+input,
+select,
+.btn {
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: #0f1734;
+  color: var(--text);
+  padding: 0.7rem 0.8rem;
+}
+
+.btn {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn.primary {
+  background: var(--primary);
+  color: #041232;
+  border: none;
+}
+
+.btn.primary:hover,
+.btn:hover {
+  filter: brightness(1.08);
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.note {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.note code {
+  color: #d6e3ff;
+}
+
+.screen-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+#statusText {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+#game {
+  margin-top: 0.8rem;
+  height: min(70vh, 680px);
+  width: min(100%, 960px);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #070b1d;
+  border: 1px solid var(--border);
+}
+
+@media (max-width: 980px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  #game {
+    height: min(60vh, 520px);
+    width: 100%;
+  }
+}
+
+
+.emulator-frame {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
