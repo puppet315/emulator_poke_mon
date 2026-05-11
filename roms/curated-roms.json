@@ -1,12 +1,6 @@
 [
   {
-    "name": "Pokémon Emerald (Example)",
+    "name": "Pokémon Emerald",
     "core": "gba",
-    "url": "roms/pokemon-emerald.gba"
-  },
-  {
-    "name": "Pokémon Crystal (Example)",
-    "core": "gb",
-    "url": "roms/pokemon-crystal.gbc"
+    "url": "roms/Pokemon - Emerald Version (USA, Europe).gba"
   }
-]
