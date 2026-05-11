@@ -1,0 +1,12 @@
+[
+  {
+    "name": "Pokémon Emerald (Example)",
+    "core": "gba",
+    "url": "roms/pokemon-emerald.gba"
+  },
+  {
+    "name": "Pokémon Crystal (Example)",
+    "core": "gb",
+    "url": "roms/pokemon-crystal.gbc"
+  }
+]

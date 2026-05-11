@@ -1,0 +1,15 @@
+# macOS
+.DS_Store
+
+# Optional local ROM files
+roms/*.gba
+roms/*.gb
+roms/*.gbc
+roms/*.nds
+roms/*.nes
+roms/*.n64
+roms/*.z64
+roms/*.smc
+roms/*.sfc
+roms/*.bin
+roms/*.zip
